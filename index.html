@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="google-site-verification" content="_SD0fHm-wXeI1BQHPaH1CZAPVcjHtW_wEBKPw_OIDdA" />
 <meta charset="UTF-8">
 <title>Bold Text Generator - Copy Fancy Fonts for Instagram, TikTok, Bio</title>
 <meta name="description" content="Free bold text generator. Type text, get bold, italic, cursive, fancy fonts. Click to copy. Works for Instagram bio, TikTok, Facebook.">
@@ -29,5 +30,4 @@ const styles={'Bold Sans':t=>t.replace(/[A-Za-z]/g,c=>String.fromCodePoint(c.cha
 input.oninput=()=>{outputs.innerHTML='';if(!input.value)return;for(let n in styles){const d=document.createElement('div');d.className='output';d.innerHTML=`<div class="label">${n} - Click to copy</div><div class="font">${styles[n](input.value)}</div>`;d.onclick=()=>{navigator.clipboard.writeText(styles[n](input.value));toast.style.display='block';setTimeout(()=>toast.style.display='none',1200)};outputs.appendChild(d)}};
 </script>
 </body>
-</html>
 </html>
