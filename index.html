@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bold Text Generator - Copy Fancy Fonts for Instagram, TikTok, Bio</title>
+<meta name="description" content="Free bold text generator. Type text, get bold, italic, cursive, fancy fonts. Click to copy. Works for Instagram bio, TikTok, Facebook.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;max-width:700px;margin:40px auto;padding:0 20px;line-height:1.6;background:#fafafa}
+h1{font-size:28px;margin-bottom:8px} .sub{color:#555;margin-bottom:24px}
+textarea{width:100%;height:120px;font-size:18px;padding:12px;border:2px solid #ddd;border-radius:8px;box-sizing:border-box}
+.output{border:1px solid #e5e5e5;padding:14px;margin:12px 0;border-radius:8px;background:#fff;cursor:pointer;transition:.2s}
+.output:hover{background:#f0f8ff;border-color:#4da6ff} .label{font-size:13px;color:#888;margin-bottom:4px}
+.font{font-size:20px;word-break:break-all} .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 16px;border-radius:6px;display:none}
+.disclaimer{font-size:12px;color:#777;margin-top:60px;border-top:1px solid #eee;padding-top:20px}
+</style>
+</head>
+<body>
+<h1>Bold Text Generator</h1>
+<p class="sub">Type anything → Click any style → Paste on Instagram, TikTok, WhatsApp</p>
+<textarea id="input" placeholder="Type your text here..."></textarea>
+<div id="outputs"></div>
+<div id="toast" class="toast">Copied!</div>
+<p class="disclaimer">Free tool for convenience. Unicode fonts may not display on all devices/apps. We are not affiliated with Instagram, TikTok, or any platform. Use at your own risk. No guarantee of accuracy or compatibility.</p>
+
+<script>
+const input=document.getElementById('input'),outputs=document.getElementById('outputs'),toast=document.getElementById('toast');
+const styles={'Bold Sans':t=>t.replace(/[A-Za-z]/g,c=>String.fromCodePoint(c.charCodeAt(0)+(c<='Z'?119743:119737))),'Italic':t=>t.replace(/[A-Za-z]/g,c=>String.fromCodePoint(c.charCodeAt(0)+(c<='Z'?119795:119789))),'Bold Italic':t=>t.replace(/[A-Za-z]/g,c=>String.fromCodePoint(c.charCodeAt(0)+(c<='Z'?119847:119841))),'Script Cursive':t=>t.replace(/[A-Za-z]/g,c=>String.fromCodePoint(c.charCodeAt(0)+(c<='Z'?119899:119893))),'Monospace':t=>t.replace(/[A-Za-z0-9]/g,c=>String.fromCodePoint(c.charCodeAt(0)+120367)),'Double Struck':t=>t.replace(/[A-Za-z]/g,c=>String.fromCodePoint(c.charCodeAt(0)+(c<='Z'?120055:120049)))};
+input.oninput=()=>{outputs.innerHTML='';if(!input.value)return;for(let n in styles){const d=document.createElement('div');d.className='output';d.innerHTML=`<div class="label">${n} - Click to copy</div><div class="font">${styles[n](input.value)}</div>`;d.onclick=()=>{navigator.clipboard.writeText(styles[n](input.value));toast.style.display='block';setTimeout(()=>toast.style.display='none',1200)};outputs.appendChild(d)}};
+</script>
+</body>
+</html>
